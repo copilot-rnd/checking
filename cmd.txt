@@ -1,0 +1,12 @@
+az staticwebapp create -n az-demo-site -g rg-JacobsAnalytics-Dev
+
+then follow https://learn.microsoft.com/en-us/azure/static-web-apps/deploy-web-framework?tabs=bash&pivots=react
+-> don't create swa-cli.config.json, it will be created automatically with the next command
+npx swa init --yes
+
+npx swa login --resource-group rg-JacobsAnalytics-Dev --app-name az-demo-site
+
+npx swa login -S 94e873d5-eb94-4bc1-a891-45498ceb3357 -T 37247798-f42c-42fd-8a37-d49c7128d36b -R rg-JacobsAnalytics-Dev -n az-demo-site --no-use-keychain
+npx swa deploy --env production -S 94e873d5-eb94-4bc1-a891-45498ceb3357 -T 37247798-f42c-42fd-8a37-d49c7128d36b -R rg-JacobsAnalytics-Dev -n az-demo-site --no-use-keychain
+
+az staticwebapp delete --resource-group rg-JacobsAnalytics-Dev --name az-demo-site --yes
